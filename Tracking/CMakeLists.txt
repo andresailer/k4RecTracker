@@ -20,9 +20,25 @@ file(GLOB sources
     ${PROJECT_SOURCE_DIR}/components/*.cpp
 )
 
+# Check if delphes is new enough
+try_compile(DelphesForDNDX ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_LIST_DIR}/../cmake/TestDelphes.cxx
+  CMAKE_FLAGS -DINCLUDE_DIRECTORIES=${DELPHES_INCLUDE_DIRS}
+  LINK_LIBRARIES ${DELPHES_LIBRARIES} ROOT::Core ROOT::MathCore ROOT::Matrix
+  CXX_STANDARD ${CMAKE_CXX_STANDARD}
+  OUTPUT_VARIABLE DELPHES_TEST_OUT
+)
+
 file(GLOB headers
   ${PROJECT_SOURCE_DIR}/include/*.h
 )
+
+if(NOT DelphesForDNDX)
+  MESSAGE(STATUS "Delphes is too old for TrackdNdxDelphesBased")
+  list(FILTER sources EXCLUDE REGEX TrackdNdxDelphesBased)
+  list(FILTER headers EXCLUDE REGEX TrackdNdxDelphesBased)
+  MESSAGE(STATUS "Failed to compile for TrackdNdxDelphesBased ${DELPHES_TEST_OUT}")
+endif()
+
 
 gaudi_add_module(${PackageName}
   SOURCES ${sources}
