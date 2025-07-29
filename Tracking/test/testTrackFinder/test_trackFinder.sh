@@ -15,6 +15,6 @@ TD=0.3
 #       --outputFile Tracking/test/testTrackFinder/out_sim_edm4hep.root 
 
 env
-find /k4RecTracker -ls
+find /k4rectracker -ls
 
 k4run Tracking/test/testTrackFinder/runTestTrackFinder.py --inputFile Tracking/test/testTrackFinder/out_sim_edm4hep.root --outputFile Tracking/test/testTrackFinder/out_tracks.root --modelPath $MODEL_PATH --tbeta $TBETA --td $TD
