@@ -13,5 +13,8 @@ TD=0.3
 #       --random.seed 42 \
 #       --numberOfEvents 1 \
 #       --outputFile Tracking/test/testTrackFinder/out_sim_edm4hep.root 
-    
+
+env
+find /k4RecTracker -ls
+
 k4run Tracking/test/testTrackFinder/runTestTrackFinder.py --inputFile Tracking/test/testTrackFinder/out_sim_edm4hep.root --outputFile Tracking/test/testTrackFinder/out_tracks.root --modelPath $MODEL_PATH --tbeta $TBETA --td $TD
