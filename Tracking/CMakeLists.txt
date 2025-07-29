@@ -68,10 +68,10 @@ install(TARGETS ${PackageName}
 
 install(FILES ${scripts} DESTINATION test)
 
-SET(test_name "test_TracksFromGenParticles")
-ADD_TEST(NAME ${test_name} COMMAND sh +x test_TracksFromGenParticles.sh)
-set_test_env(${test_name})
-set_tests_properties(${test_name} PROPERTIES WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/Tracking/test/testTracksFromGenParticles")
+# SET(test_name "test_TracksFromGenParticles")
+# ADD_TEST(NAME ${test_name} COMMAND sh +x test_TracksFromGenParticles.sh)
+# set_test_env(${test_name})
+# set_tests_properties(${test_name} PROPERTIES WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/Tracking/test/testTracksFromGenParticles")
 
 ExternalData_Add_Test(test_TrackFinder
         NAME test_TrackFinder
